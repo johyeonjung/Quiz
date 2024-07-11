@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Application</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Quiz App</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <!-- 로그인 상태에 따라 로그인 또는 로그아웃 링크를 표시 -->
+            <a class="nav-link" th:href="@{/login}" sec:authorize="isAnonymous()">로그인</a>
+            <a class="nav-link" th:href="@{/logout}" sec:authorize="isAuthenticated()">로그아웃</a>
+
+            <!-- 로그인하지 않은 상태에서만 회원가입 버튼 표시 -->
+            <button type="button" class="btn btn-secondary mt-3"
+                    th:if="${#authentication.principal == null}"
+                    onclick="location.href='/signup'">회원가입</button>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <h2>Welcome to Quiz App</h2>
+    <p>This is a quiz application where you can...</p>
+    <p>Start learning and testing your knowledge!</p>
+
+    <div class="row mt-4">
+        <!-- Quiz Card 1 -->
+        <div class="col-md-4">
+            <div class="card">
+                <img src="https://via.placeholder.com/150" class="card-img-top" alt="Quiz 1">
+                <div class="card-body">
+                    <h5 class="card-title">만화 퀴즈</h5>
+                    <p class="card-text">당신은 얼마나 오타쿠인가요? 오타쿠력 테스트 !  </p>
+                    <a th:href="@{/quiz/{category}(category=3)}" class="btn btn-primary">퀴즈 시작</a>
+                </div>
+            </div>
+        </div>
+        <!-- Quiz Card 2 -->
+        <div class="col-md-4">
+            <div class="card">
+                <img src="https://via.placeholder.com/150" class="card-img-top" alt="Quiz 2">
+                <div class="card-body">
+                    <h5 class="card-title">영화 퀴즈</h5>
+                    <p class="card-text">무슨 영화 좋아하세요 ? 영화 퀴즈 !</p>
+                    <a th:href="@{/quiz/{category}(category=2)}" class="btn btn-primary">퀴즈 시작</a>
+                </div>
+            </div>
+        </div>
+        <!-- Quiz Card 3 -->
+        <div class="col-md-4">
+            <div class="card">
+                <img src="https://via.placeholder.com/150" class="card-img-top" alt="Quiz 3">
+                <div class="card-body">
+                    <h5 class="card-title">상식 퀴즈</h5>
+                    <p class="card-text">당신은 얼마나 상식적인 사람인가요 ? </p>
+                    <a href="/quiz/science" class="btn btn-primary">퀴즈 시작</a>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Quiz Card 4 -->
+        <div class="col-md-4">
+            <div class="card">
+                <img src="https://via.placeholder.com/150" class="card-img-top" alt="Quiz 4">
+                <div class="card-body">
+                    <h5 class="card-title">축구 퀴즈</h5>
+                    <p class="card-text"> 축구 팬이라면 이 퀴즈는 골문을 통과하듯이 쉽겠죠? 아니면 VAR 확인이 필요할 수도! </p>
+                    <a href="/quiz/science" class="btn btn-primary">퀴즈 시작</a>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Quiz Card 5 -->
+        <div class="col-md-4">
+            <div class="card">
+                <img src="https://via.placeholder.com/150" class="card-img-top" alt="Quiz 5">
+                <div class="card-body">
+                    <h5 class="card-title">영화 퀴즈</h5>
+                    <p class="card-text"> 내용 설명 </p>
+                    <a th:href="@{/quiz/{category}(category=${1})}" class="btn btn-primary">퀴즈 시작</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Card 6 -->
+        <div class="col-md-4">
+            <div class="card">
+                <img src="https://via.placeholder.com/150" class="card-img-top" alt="Quiz 6">
+                <div class="card-body">
+                    <h5 class="card-title">밈 퀴즈</h5>
+                    <p class="card-text"> 내용 설명 </p>
+                    <a href="/quiz/science" class="btn btn-primary">퀴즈 시작</a>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+<script src="/js/quiz.js"></script>
+</html>
